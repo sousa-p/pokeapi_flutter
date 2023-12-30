@@ -1,1 +1,1 @@
-class PokeApiRepository {}
+class PokemonRepository {}
