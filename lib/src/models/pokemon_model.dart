@@ -7,7 +7,6 @@ class PokemonModel {
   double? weight;
   String? sprite;
   List<StatModel> stats = [];
-  List<PokemonModel> evolutions = [];
   List<String> moves = [];
   List<String> types = [];
   List<String> weaknesses = [];
@@ -22,7 +21,6 @@ class PokemonModel {
     this.sprite,
   }) {
     stats = <StatModel>[];
-    evolutions = <PokemonModel>[];
     moves = <String>[];
     types = <String>[];
     weaknesses = <String>[];
@@ -40,11 +38,6 @@ class PokemonModel {
     if (json['stats'] != null) {
       List statsList = json['stats'] as List;
       stats = statsList.map((e) => StatModel.fromJson(e)).toList();
-    }
-
-    if (json['evolutions'] != null) {
-      List evolutionsList = json['evolutions'];
-      evolutions = evolutionsList.map((e) => PokemonModel.fromJson(e)).toList();
     }
 
     if (json['moves'] != null) {
@@ -88,13 +81,13 @@ class PokemonModel {
       'steel': ['fire', 'fighting', 'ground'],
       'fairy': ['poison', 'steel']
     };
-    List weaknesses = [];
+    List<String> weaknesses = [];
 
     for (var type in types) {
       weaknesses.addAll(allWeaknesses[type] ?? []);
     }
 
-    return Set<String>.from(weaknesses).toList();
+    return weaknesses.toSet().toList();
   }
 
   List<String> _getStrengths() {
@@ -118,12 +111,12 @@ class PokemonModel {
       'fairy': ['fighting', 'dragon', 'dark']
     };
 
-    List strengths = [];
+    List<String> strengths = [];
 
     for (var type in types) {
       strengths.addAll(allStrengths[type] ?? []);
     }
 
-    return Set<String>.from(strengths).toList();
+    return strengths.toSet().toList();
   }
 }
