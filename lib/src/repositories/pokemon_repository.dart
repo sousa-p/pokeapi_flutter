@@ -12,8 +12,8 @@ class PokemonRepository {
     Uri url = Uri.https(baseUrl, endpoint, params);
 
     var response = await http.get(url);
-    var list = jsonDecode(response.body);
-    var results = list['results'] as List;
+    var json = jsonDecode(response.body);
+    var results = json['results'] as List;
     return results.map((e) => PokemonModel.fromJson(e)).toList();
   }
 
