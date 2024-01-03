@@ -30,7 +30,7 @@ class PokemonModel {
 
   PokemonModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    name = json['name'];
+    name = _capitalizeFirstLetter(json['name']);
     height = json['height']?.toDouble();
     weight = json['weight']?.toDouble();
     sprite = json['sprites']?['front_default'];
@@ -59,6 +59,11 @@ class PokemonModel {
       List abilitiesList = json['abilities'];
       abilities = abilitiesList.map((e) => e['ability']['name'] as String).toList();
     }
+  }
+
+  String _capitalizeFirstLetter(String text) {
+    if (text.isEmpty) return text;
+    return text.substring(0, 1).toUpperCase() + text.substring(1);
   }
 
   List<String> _getWeaknesses() {

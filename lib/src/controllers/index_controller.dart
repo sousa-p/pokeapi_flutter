@@ -11,7 +11,7 @@ class IndexController {
   Future<void> init() async {
     state.value = IndexState.loading;
     try {
-      loadedPokemons = await _repository.getPokemons();
+      loadedPokemons = await _repository.getPokemons(limit: 30);
       filteredPokemons = loadedPokemons;
       state.value = IndexState.success;
     } catch (_) {

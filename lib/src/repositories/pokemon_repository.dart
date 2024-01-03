@@ -6,9 +6,12 @@ import 'package:pokeapi_flutter/src/models/pokemon_model.dart';
 class PokemonRepository {
   final String baseUrl = 'pokeapi.co';
 
-  Future<List<PokemonModel>> getPokemons({int offset = 0, int limit = 20}) async {
+  Future<List<PokemonModel>> getPokemons({int offset = 0, int limit = 10}) async {
     String endpoint = '/api/v2/pokemon';
-    Map<String, dynamic> params = {'offset': offset.toString(), 'limit': limit.toString()};
+    Map<String, dynamic> params = {
+      'offset': offset.toString(),
+      'limit': limit.toString()
+    };
     Uri url = Uri.https(baseUrl, endpoint, params);
 
     var response = await http.get(url);
