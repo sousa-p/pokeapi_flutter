@@ -33,7 +33,6 @@ class PokemonModel {
     name = _capitalizeFirstLetter(json['name']);
     height = json['height']?.toDouble();
     weight = json['weight']?.toDouble();
-    sprite = json['sprites']?['front_default'];
 
     if (json['stats'] != null) {
       List statsList = json['stats'] as List;
@@ -123,5 +122,13 @@ class PokemonModel {
     }
 
     return strengths.toSet().toList();
+  }
+
+  String getSpriteUrl() {
+    return 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${getFormatedId()}.png';
+  }
+
+  String getFormatedId() {
+    return id.toString().padLeft(3, '0');
   }
 }

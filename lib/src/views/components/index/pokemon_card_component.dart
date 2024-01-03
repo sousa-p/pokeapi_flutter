@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:pokeapi_flutter/src/models/pokemon_model.dart';
 
@@ -9,8 +7,6 @@ class PokemonCardComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String id = pokemon.id.toString().padLeft(3, '0');
-    String url = 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/$id.png';
     return Container(
       width: 382,
       height: 132,
@@ -37,7 +33,7 @@ class PokemonCardComponent extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                '#$id',
+                '#${pokemon.getFormatedId()}',
                 style: const TextStyle(color: Colors.black87),
               ),
               const SizedBox(
@@ -80,7 +76,7 @@ class PokemonCardComponent extends StatelessWidget {
                 width: 140,
                 height: 140,
                 child: Image.network(
-                  url,
+                  pokemon.getSpriteUrl(),
                   fit: BoxFit.cover,
                 ),
               ),
