@@ -125,7 +125,7 @@ class PokemonModel {
   }
 
   String getSpriteUrl() {
-    return 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${getFormatedId()}.png';
+    return 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/$id.png';
   }
 
   String getFormatedId() {
