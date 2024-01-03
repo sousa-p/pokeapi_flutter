@@ -12,16 +12,17 @@ class PokemonCardComponent extends StatelessWidget {
       height: 132,
       padding: const EdgeInsets.only(left: 16),
       decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey, width: 1),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(.25),
+            color: Colors.black.withOpacity(.20),
             blurRadius: 4,
-            offset: const Offset(-2, 4),
+            offset: const Offset(2, 4),
           ),
         ],
         borderRadius: BorderRadius.circular(32),
         gradient: const LinearGradient(
-          colors: [Color.fromRGBO(198, 0, 0, .7), Color.fromRGBO(198, 0, 0, .5)],
+          colors: [Color.fromRGBO(250, 250, 250, 1), Color.fromRGBO(220, 220, 220, 1)],
           begin: Alignment.bottomLeft,
           end: Alignment.topRight,
         ),

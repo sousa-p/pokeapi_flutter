@@ -41,16 +41,15 @@ class _IndexViewState extends State<IndexView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text(
-          'PokéAPI',
-          style: TextStyle(color: Colors.black87),
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/images/bg.png'), repeat: ImageRepeat.repeat),
         ),
+        child: AnimatedBuilder(
+            animation: controller.state,
+            builder: (context, child) => _stateManagement(controller.state.value)),
       ),
-      body: AnimatedBuilder(
-          animation: controller.state,
-          builder: (context, child) => _stateManagement(controller.state.value)),
     );
   }
 }

@@ -5,7 +5,11 @@ import 'package:pokeapi_flutter/src/views/components/index/pokemon_card_componen
 class MainComponent extends StatefulWidget {
   final List<PokemonModel> pokemons;
   final Function handleScroll;
-  const MainComponent({super.key, required this.pokemons, required this.handleScroll});
+  const MainComponent({
+    super.key,
+    required this.pokemons,
+    required this.handleScroll,
+  });
 
   @override
   State<MainComponent> createState() => _MainComponentState();
@@ -35,8 +39,7 @@ class _MainComponentState extends State<MainComponent> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 100),
+    return SizedBox(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child: SingleChildScrollView(
@@ -44,7 +47,7 @@ class _MainComponentState extends State<MainComponent> {
         child: Column(
           children: [
             const SizedBox(
-              height: 64,
+              height: 40,
             ),
             Wrap(
               alignment: WrapAlignment.center,
@@ -54,7 +57,6 @@ class _MainComponentState extends State<MainComponent> {
                 widget.pokemons.length,
                 (index) {
                   PokemonModel pokemon = widget.pokemons[index];
-                  pokemon.id = index + 1;
                   return PokemonCardComponent(pokemon: pokemon);
                 },
               ),
