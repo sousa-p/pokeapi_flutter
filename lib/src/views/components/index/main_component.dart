@@ -5,6 +5,7 @@ import 'package:pokeapi_flutter/src/views/components/index/pokemon_card_componen
 class MainComponent extends StatefulWidget {
   final List<PokemonModel> pokemons;
   final Function handleScroll;
+
   const MainComponent({
     super.key,
     required this.pokemons,
