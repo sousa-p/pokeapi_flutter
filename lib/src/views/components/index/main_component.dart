@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokeapi_flutter/src/models/pokemon_model.dart';
+import 'package:pokeapi_flutter/src/views/components/index/pokemon_card_component.dart';
 
 class MainComponent extends StatefulWidget {
   final List<PokemonModel> pokemons;
@@ -34,15 +35,33 @@ class _MainComponentState extends State<MainComponent> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 100),
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      child: SingleChildScrollView(
         controller: _scrollController,
-        itemCount: widget.pokemons.length,
-        itemBuilder: (context, index) {
-          PokemonModel pokemon = widget.pokemons[index];
-
-          return ListTile(
-            title: Text(pokemon.name!),
-          );
-        });
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 64,
+            ),
+            Wrap(
+              alignment: WrapAlignment.center,
+              spacing: 23,
+              runSpacing: 40,
+              children: List.generate(
+                widget.pokemons.length,
+                (index) {
+                  PokemonModel pokemon = widget.pokemons[index];
+                  pokemon.id = index + 1;
+                  return PokemonCardComponent(pokemon: pokemon);
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
