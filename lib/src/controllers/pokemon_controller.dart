@@ -1,3 +1,21 @@
+import 'package:flutter/material.dart';
+import 'package:pokeapi_flutter/src/models/pokemon_model.dart';
+import 'package:pokeapi_flutter/src/repositories/pokemon_repository.dart';
+
 class PokemonController {
-  Future<void> init(int id) async {}
+  final PokemonRepository repository = PokemonRepository();
+  late PokemonModel pokemon;
+  ValueNotifier<PokemonState> state = ValueNotifier<PokemonState>(PokemonState.loading);
+
+  Future<void> init(int id) async {
+    state.value = PokemonState.loading;
+    try {
+      pokemon = await repository.getPokemon(id);
+      state.value = PokemonState.sucess;
+    } catch (_) {
+      state.value = PokemonState.error;
+    }
+  }
 }
+
+enum PokemonState { loading, error, sucess }
