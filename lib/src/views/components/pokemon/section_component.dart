@@ -53,10 +53,13 @@ class _SectionComponentState extends State<SectionComponent>
             indicatorColor: Colors.white,
           ),
         ),
-        body: TabBarView(controller: _tabController, children: [
-          AboutComponent(pokemon: widget.pokemon),
-          StatsComponent(pokemon: widget.pokemon),
-          MovesComponent(pokemon: widget.pokemon)
-        ]));
+        body: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 64),
+          child: TabBarView(controller: _tabController, children: [
+            AboutComponent(pokemon: widget.pokemon),
+            StatsComponent(pokemon: widget.pokemon),
+            MovesComponent(pokemon: widget.pokemon)
+          ]),
+        ));
   }
 }

@@ -7,6 +7,7 @@ class PokemonModel {
   double? height;
   double? weight;
   String? abilities;
+  double total = 0;
   List<StatModel> stats = [];
   List<String> moves = [];
   List<String> types = [];
@@ -30,7 +31,12 @@ class PokemonModel {
 
     if (json['stats'] != null) {
       List statsList = json['stats'] as List;
-      stats = statsList.map((e) => StatModel.fromJson(e)).toList();
+
+      stats = statsList.map((e) {
+        StatModel json = StatModel.fromJson(e);
+        total += json.points!;
+        return json;
+      }).toList();
     }
 
     if (json['moves'] != null) {
