@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:pokeapi_flutter/src/models/stat_model.dart';
 
 class PokemonModel {
@@ -5,27 +6,19 @@ class PokemonModel {
   String? name;
   double? height;
   double? weight;
-  String? sprite;
+  String? abilities;
   List<StatModel> stats = [];
   List<String> moves = [];
   List<String> types = [];
   List<String> weaknesses = [];
   List<String> strengths = [];
-  List<String> abilities = [];
 
-  PokemonModel({
-    this.id,
-    this.name,
-    this.height,
-    this.weight,
-    this.sprite,
-  }) {
+  PokemonModel({this.id, this.name, this.height, this.weight, this.abilities}) {
     stats = <StatModel>[];
     moves = <String>[];
     types = <String>[];
     weaknesses = <String>[];
     strengths = <String>[];
-    abilities = <String>[];
   }
 
   PokemonModel.fromJson(Map<String, dynamic> json) {
@@ -33,6 +26,7 @@ class PokemonModel {
     name = _capitalizeFirstLetter(json['name']);
     height = json['height']?.toDouble();
     weight = json['weight']?.toDouble();
+    abilities = json['abilities']?[0]['ability']['name'].toString();
 
     if (json['stats'] != null) {
       List statsList = json['stats'] as List;
@@ -52,11 +46,6 @@ class PokemonModel {
     if (types.isNotEmpty) {
       weaknesses = _getWeaknesses();
       strengths = _getStrengths();
-    }
-
-    if (json['abilities'] != null) {
-      List abilitiesList = json['abilities'];
-      abilities = abilitiesList.map((e) => e['ability']['name'] as String).toList();
     }
   }
 
@@ -130,5 +119,37 @@ class PokemonModel {
 
   String getFormatedId() {
     return id.toString().padLeft(3, '0');
+  }
+
+  List<Color> getColors() {
+    var type = (types.isNotEmpty) ? types[0] : '';
+
+    switch (type) {
+      case 'fire':
+        return [
+          const Color.fromARGB(255, 235, 183, 83),
+          const Color.fromARGB(181, 198, 0, 0)
+        ];
+      case 'water':
+        return [
+          const Color.fromARGB(255, 32, 197, 245),
+          const Color.fromARGB(255, 21, 124, 154)
+        ];
+      case 'electric':
+        return [
+          const Color.fromARGB(255, 252, 244, 124),
+          const Color.fromARGB(255, 188, 137, 5)
+        ];
+      case 'grass':
+        return [
+          const Color.fromARGB(255, 112, 208, 144),
+          const Color.fromARGB(255, 85, 162, 58)
+        ];
+      default:
+        return [
+          const Color.fromARGB(255, 208, 144, 1),
+          const Color.fromARGB(255, 85, 162, 58)
+        ];
+    }
   }
 }
