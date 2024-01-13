@@ -7,6 +7,20 @@ class MovesComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return ListView.builder(
+        itemCount: pokemon.moves.length,
+        itemBuilder: (BuildContext context, int index) {
+          String move = pokemon.moves[index];
+
+          return Column(
+            children: [
+              ListTile(title: Text(move)),
+              const Divider(
+                height: 1,
+                color: Color.fromARGB(255, 216, 216, 216),
+              )
+            ],
+          );
+        });
   }
 }

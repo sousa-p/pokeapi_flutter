@@ -151,10 +151,70 @@ class PokemonModel {
           const Color.fromARGB(255, 112, 208, 144),
           const Color.fromARGB(255, 85, 162, 58)
         ];
+      case 'poison':
+        return [
+          const Color.fromARGB(255, 97, 20, 188),
+          const Color.fromARGB(255, 136, 73, 176)
+        ];
+      case 'ghost':
+        return [
+          const Color.fromARGB(255, 118, 130, 139),
+          const Color.fromARGB(255, 68, 68, 68)
+        ];
+      case 'flying':
+        return [
+          const Color.fromARGB(255, 170, 203, 225),
+          const Color.fromARGB(255, 183, 219, 255)
+        ];
+      case 'bug':
+        return [
+          const Color.fromARGB(255, 152, 192, 65),
+          const Color.fromARGB(255, 112, 208, 144)
+        ];
+      case 'rock':
+        return [
+          const Color.fromARGB(255, 170, 99, 69),
+          const Color.fromARGB(255, 125, 54, 0)
+        ];
+      case 'steel':
+        return [
+          const Color.fromARGB(255, 197, 195, 194),
+          const Color.fromARGB(255, 138, 138, 138)
+        ];
+      case 'dark':
+        return [
+          const Color.fromARGB(255, 141, 142, 203),
+          const Color.fromARGB(255, 83, 85, 177)
+        ];
+      case 'dragon':
+        return [
+          const Color.fromARGB(255, 183, 219, 255),
+          const Color.fromARGB(255, 146, 196, 245),
+        ];
+      case 'fairy':
+        return [
+          const Color.fromARGB(255, 255, 183, 231),
+          const Color.fromARGB(255, 243, 106, 190),
+        ];
+      case 'ice':
+        return [
+          const Color.fromARGB(255, 183, 202, 255),
+          const Color.fromARGB(255, 125, 152, 240),
+        ];
+      case 'psychic':
+        return [
+          const Color.fromARGB(255, 169, 141, 248),
+          const Color.fromRGBO(198, 115, 236, 1),
+        ];
+      case 'ground':
+        return [
+          const Color.fromARGB(255, 68, 50, 45),
+          const Color.fromARGB(255, 56, 52, 50),
+        ];
       default:
         return [
-          const Color.fromARGB(255, 208, 144, 1),
-          const Color.fromARGB(255, 85, 162, 58)
+          const Color.fromARGB(255, 50, 50, 50),
+          const Color.fromARGB(255, 20, 20, 20)
         ];
     }
   }

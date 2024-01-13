@@ -21,7 +21,7 @@ class StatBarComponent extends StatelessWidget {
               children: [
                 SizedBox(width: 25, child: Text(points.toStringAsFixed(0))),
                 Container(
-                  width: points / 100 * 300,
+                  width: points / 150 * 300,
                   height: 16,
                   decoration: const BoxDecoration(
                       color: Colors.red,
